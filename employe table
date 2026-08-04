@@ -1,0 +1,84 @@
+// Encapsulation and Polymorphism Example
+// Employee Details Table
+
+class Employee {
+    // Encapsulation: private data members
+    private int empId;
+    private String empName;
+    private double salary;
+
+    // Constructor
+    public Employee(int empId, String empName, double salary) {
+        this.empId = empId;
+        this.empName = empName;
+        this.salary = salary;
+    }
+
+    // Getter and Setter methods
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    // Polymorphism: method overriding
+    public void displayDetails() {
+        System.out.println(empId + "\t" + empName + "\t" + salary);
+    }
+}
+
+// Child class
+class Manager extends Employee {
+
+    private String department;
+
+    public Manager(int empId, String empName, double salary, String department) {
+        super(empId, empName, salary);
+        this.department = department;
+    }
+
+    // Overriding parent method
+    @Override
+    public void displayDetails() {
+        System.out.println(getEmpId() + "\t" + getEmpName() +
+                "\t" + getSalary() + "\t" + department);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Employee table heading
+        System.out.println("Employee Details Table");
+        System.out.println("------------------------------------");
+        System.out.println("ID\tName\tSalary\tDepartment");
+
+        // Polymorphism: parent reference holding child object
+        Employee emp1 = new Employee(101, "geeta", 25000);
+        Employee emp2 = new Manager(102, "riya", 50000, "IT");
+        Employee emp3 = new Manager(103, "payal", 45000, "HR");
+
+        // Display details
+        emp1.displayDetails();
+        emp2.displayDetails();
+        emp3.displayDetails();
+    }
+}
